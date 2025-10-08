@@ -1,9 +1,9 @@
-#pragma once
+#ifndef ZIP_UTILS_H
+#define ZIP_UTILS_H
 
-#include <cstdint>
 #include <stdint.h>
+#include <stdbool.h>
 
-#pragma pack(push, 1)
 typedef struct {
     uint32_t signature;
     uint16_t version;
@@ -16,10 +16,11 @@ typedef struct {
     uint32_t uncompressed_size;
     uint16_t filename_length;
     uint16_t extra_length;
-} ZipHeader;
-#pragma pack(pop)
+} __attribute__((packed)) ZipHeader;
 
 bool extract_zip_header(const char *filename, uint8_t *encrypted_header,
-                        uint8_t *check_byte);
+                        uint8_t *check_byte1, uint8_t *check_byte2);
 
 void print_zip_info(const ZipHeader *header);
+
+#endif
