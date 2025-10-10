@@ -1,5 +1,8 @@
 # Prerequisites
 *.d
+zip_cracker
+test.zip
+file.txt
 
 # Compiled Object files
 *.slo
